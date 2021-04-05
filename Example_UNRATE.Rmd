@@ -1,0 +1,75 @@
+---
+title: "Dashboard"
+author: " by Johnyy Clark"
+output: flexdashboard::flex_dashboard
+orientation: rows
+social: menu
+source_code: embed
+---
+
+```{r}
+library(flexdashboard)
+
+# Read the data
+df <- read.csv("UNRATE.csv")
+#head(df)
+#tail(df)
+#summary(df)
+
+### cleaning the data
+#sum(!complete.cases(df))
+
+### Now will use the function to remove the missings
+#na.omit(df)
+```
+
+Data Visualization
+=======================================================================
+
+
+
+Row
+-------------------------------------
+    
+### Plot with Time trend
+    
+```{r}
+df<-read.csv("UNRATE.csv")
+plot(df$un~as.Date(df$date,"%d/%m/%Y"),type="l",
+xlab="Date Time", ylab="Frequecny (4.4 to 10)", col="blue",
+main="UNRATE Dataset Plotting")
+
+```
+
+### Scatter Chart
+    
+```{r}
+df<-read.csv("UNRATE.csv")
+boxplot(df$un~as.Date(df$date,"%d/%m/%Y"),type="l", col="blue",
+xlab="Date Time", ylab="Frequecny (4.4 to 10)",
+main="UNRATE Dataset Plotting")
+
+```   
+
+Row
+-------------------------------------
+   
+### BarPlot Chart
+
+```{r}
+df<-read.csv("UNRATE.csv")
+barplot(df$un~as.Date(df$date,"%d/%m/%Y"),
+xlab="Date Time", ylab="Frequecny (4.4 to 10)", col="blue",
+main="UNRATE Dataset Plotting")
+
+```   
+ 
+### Time Series Chart
+    
+```{r}
+df<-read.csv("UNRATE.csv")
+plot(df$un~as.Date(df$date,"%d/%m/%Y"),type="l", col="green",
+xlab="Date Time", ylab="Frequecny (4.4 to 10)",
+main="UNRATE Dataset Plotting")
+
+```

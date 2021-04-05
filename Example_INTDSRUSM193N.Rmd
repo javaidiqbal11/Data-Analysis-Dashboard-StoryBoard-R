@@ -1,0 +1,71 @@
+---
+title: "Dashboard"
+author: " by Johnyy Clark"
+output: flexdashboard::flex_dashboard
+orientation: rows
+social: menu
+source_code: embed
+---
+
+```{r}
+library(flexdashboard)
+
+# Read the data
+df <- read.csv("INTDSRUSM193N.csv")
+#head(df)
+#tail(df)
+#summary(df)
+
+### cleaning the data
+#sum(!complete.cases(df))
+
+### Now will use the function to remove the missings
+#na.omit(df)
+```
+
+Data Visualization
+=======================================================================
+
+
+
+Row
+-------------------------------------
+    
+### Plot with Time trend
+    
+```{r}
+plot(df$intd~as.Date(df$date,"%d/%m/%Y"),type="l",
+xlab="Date Time", ylab="Frequency", col="blue",
+main="INTDSRUSM193N Dataset Plotting")
+
+```
+
+### Scatter Chart
+    
+```{r}
+boxplot(df$intd~as.Date(df$date,"%d/%m/%Y"),type="l", col="blue",
+xlab="Date Time", ylab="Frequency",
+main="INTDSRUSM193N Dataset Plotting")
+
+```   
+
+Row
+-------------------------------------
+   
+### BarPlot Chart
+
+```{r}
+barplot(df$intd~as.Date(df$date,"%d/%m/%Y"),
+xlab="Date Time", ylab="Units", col="blue",
+main="INTDSRUSM193N Dataset Plotting")
+
+```   
+ 
+### Time Series Chart
+    
+```{r}
+plot(df$intd~as.Date(df$date,"%d/%m/%Y"),type="l", col="green",
+xlab="Date Time", ylab="Frequency",
+main="INTDSRUSM193N Dataset Plotting")
+
+```
